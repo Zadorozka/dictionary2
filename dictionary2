@@ -1,0 +1,61 @@
+def Slovnik(text):
+    text = text.replace(".", " ")
+    text = text.replace(",", " ")
+
+    allWords = text.split();
+    allWordsSingle = {};
+    for word in allWords:
+        if len(word) > 3:
+            allWordsSingle.update({word: allWords.count(word)})
+
+    keysSorted = []
+    for key in allWordsSingle:
+        keysSorted.append(key)
+
+    keysSorted.sort();
+
+    for key in keysSorted:
+        print(key)
+
+def top5Len(text):
+    text = text.replace(",","")
+    text = text.replace(",","")
+    text = text.split()
+    def maxlen (text):
+        text = set(text)
+        text = list(text)
+        text.sort (key=len)
+        text.reverse()
+        return "\n".join(text[0:5])
+    print(maxlen(text))
+
+def ShowTopFiveWords(text):
+    allWords = text.split()
+    allWordsSingle = {};
+
+    for word in allWords:
+        allWordsSingle.update({word: allWords.count(word)})
+
+    wordsWithCount = {}
+    for word in allWordsSingle:
+        wordsWithCount.update( {word: allWords.count(word)} )
+
+    iteration = 1
+    for word in sorted(wordsWithCount.items(), key=lambda item: item[1], reverse=True):
+        if iteration <= 5:
+            print(f"Top {iteration} - {word[0]}: {word[1]} times")
+            iteration += 1;
+    print("\n")
+
+text = input("\n Enter text: ")
+while True:
+
+    action = input("Select an action: \n1 - Slovnik\n2 - Show words count\n3 - 5 len\nEnter your answer: ")
+    if action == "1":
+        Slovnik(text)
+    elif action == "2":
+        top5Len(text)
+    elif action == "3":
+        ShowTopFiveWords(text)
+    else:
+        print("you doyn")
